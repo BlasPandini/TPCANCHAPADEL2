@@ -1,5 +1,5 @@
 Algoritmo SOMOSPADDEL
-	// Para turnos
+	// Para turnos y reserva
 	Dimension turnos[10] //turnos tomados en la semana
 	Dimension dias[7] 
 	Dimension horas[5] 
@@ -12,7 +12,7 @@ Algoritmo SOMOSPADDEL
 	
 	
 	Repetir
-		escribir "BIENVENIDOS A SOMOS PADDEL ¿En qué te podemos ayudar?"
+		escribir "BIENVENIDOS A SOMOS PADDEL Â¿En quÃ© te podemos ayudar?"
 		escribir "1. Reservar turnos"
 		escribir "2. Reservar paleta (cantidad que necesitan para el turno)"
 		escribir "3. Reservar pelotas PENN Nuevas"
@@ -24,10 +24,10 @@ Algoritmo SOMOSPADDEL
 			
 			dias[1] <- "Lunes "
 			dias[2] <- "Martes "
-			dias[3] <- "Miércoles "
+			dias[3] <- "MiÃ©rcoles "
 			dias[4] <- "Jueves "
 			dias[5] <- "Viernes "
-			dias[6] <- "Sábado "
+			dias[6] <- "SÃ¡bado "
 			dias[7] <- "Domingo "
 			
 			horas[1] <- "8:00 AM - 9:30 AM"
@@ -40,7 +40,7 @@ Algoritmo SOMOSPADDEL
 			
 			
 			Repetir
-				Mostrar "Seleccione el día para el turno:"
+				Mostrar "Seleccione el dÃ­a para el turno:"
 				Para i <- 1 Hasta 7
 					Mostrar i, ". ", dias[i]
 				Fin Para
@@ -64,14 +64,14 @@ Algoritmo SOMOSPADDEL
 						FinSi
 					FinPara
 					Si Existe entonces
-						Mostrar "El turno seleccionado ya está ocupado. Por favor, elija otro."
+						Mostrar "El turno seleccionado ya estÃ¡ ocupado. Por favor, elija otro."
 					SiNo
 						turnos[cantTurno]<-turnoElegido	
-						Mostrar "Turno reservado.Te esperamos en las mejores canchas de Olavarría!!!"
+						Mostrar "Turno reservado.Te esperamos en las mejores canchas de OlavarrÃ­a!!!"
 					FinSi
 				FinSi
 				cantTurno<-cantTurno+1
-				Mostrar "¿Desea reservar otro turno? (1: Sí / 0: No)"
+				Mostrar "Â¿Desea reservar otro turno? (1: SÃ­ / 0: No)"
 				Leer opcionMenu
 			Hasta que opcionMenu = 0	
 			Mostrar "Lista de turnos ingresados:"
