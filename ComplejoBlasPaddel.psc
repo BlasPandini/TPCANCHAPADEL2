@@ -1,33 +1,28 @@
 Algoritmo SOMOSPADDEL
-	// Para turnos y reserva
-	Dimension turnos[10] //turnos tomados en la semana
+	
+	Dimension turnos[10] 
 	Dimension dias[7] 
 	Dimension horas[5] 
 	Definir diaElegido, horaElegida como cadena
 	Definir opcionMenu, cantTurno como Entero
+	Definir cantPaletas, cantPelotas como Entero
 	
-	// Para catalogo
-	Dimension productos[10]
-	Definir cantidadProductos como Entero
-	
-	
-	Repetir
-		escribir "BIENVENIDOS A SOMOS PADDEL Â¿En quÃ© te podemos ayudar?"
+	Repetir //Menú
+		escribir "BIENVENIDOS A SOMOS PADDEL ¿En qué te podemos ayudar?"
 		escribir "1. Reservar turnos"
 		escribir "2. Reservar paleta (cantidad que necesitan para el turno)"
 		escribir "3. Reservar pelotas PENN Nuevas"
 		escribir "4.Salir"
 		Leer menuPrincipal
 		
-		// reservar turnos
 		Si menuPrincipal=1 Entonces
 			
 			dias[1] <- "Lunes "
 			dias[2] <- "Martes "
-			dias[3] <- "MiÃ©rcoles "
+			dias[3] <- "Miércoles "
 			dias[4] <- "Jueves "
 			dias[5] <- "Viernes "
-			dias[6] <- "SÃ¡bado "
+			dias[6] <- "Sábado "
 			dias[7] <- "Domingo "
 			
 			horas[1] <- "8:00 AM - 9:30 AM"
@@ -36,11 +31,10 @@ Algoritmo SOMOSPADDEL
 			horas[4] <- "5:00 PM - 7:00 PM"
 			horas[5] <- "8:00 PM - 10:00 PM"
 			
-			cantTurno<-1 //cantidad de turnos tomados
+			cantTurno<-1 
 			
-			
-			Repetir
-				Mostrar "Seleccione el dÃ­a para el turno:"
+			Repetir //Programación de cada una de las opciones
+				Mostrar "Seleccione el día para el turno:"
 				Para i <- 1 Hasta 7
 					Mostrar i, ". ", dias[i]
 				Fin Para
@@ -52,55 +46,64 @@ Algoritmo SOMOSPADDEL
 				Fin Para
 				Leer horaElegida
 				
-				turnoElegido<-concatenar(diaElegido,horaElegida) // Uno los valores para poder comparar
-				Si cantTurno=1 entonces // es el primer turno, no debo compararlo			
+				turnoElegido<-concatenar(diaElegido,horaElegida) 
+				Si cantTurno=1 entonces 		
 					turnos[cantTurno]<-turnoElegido	
 					Mostrar "Turno reservado exitosamente."
 				Sino
-					Existe<- Falso //Es verdadero si encontro un turno duplicado
+					Existe<- Falso 
 					Para i<-1 Hasta cantTurno Hacer
-						Si turnos[i]=turnoelegido Entonces // si ese turno ya esta en el vector
+						Si turnos[i]=turnoelegido Entonces 
 							Existe<-Verdadero
 						FinSi
 					FinPara
 					Si Existe entonces
-						Mostrar "El turno seleccionado ya estÃ¡ ocupado. Por favor, elija otro."
+						Mostrar "El turno seleccionado ya está reservado! Por favor, elija otro!!!"
 					SiNo
 						turnos[cantTurno]<-turnoElegido	
-						Mostrar "Turno reservado.Te esperamos en las mejores canchas de OlavarrÃ­a!!!"
+						Mostrar "Turno reservado.Te esperamos en las mejores canchas de Olavarría!!!"
 					FinSi
 				FinSi
 				cantTurno<-cantTurno+1
-				Mostrar "Â¿Desea reservar otro turno? (1: SÃ­ / 0: No)"
+				Mostrar "¿Desea reservar otro turno? (1: Sí / 0: No)"
 				Leer opcionMenu
 			Hasta que opcionMenu = 0	
 			Mostrar "Lista de turnos ingresados:"
-			Para i <- 1 Hasta cantTurno-1 // tengo que restar el que sume de mas
+			Para i <- 1 Hasta cantTurno-1 
 				xdias<-subcadena(turnos[i],1,1)
 				xhoras<-subcadena(turnos[i],2,2)
 				Mostrar dias[xdias]," ",horas[xhoras]
 			Fin Para		
 		FinSi		
-		//mantener catalogo
+		
 		Si menuPrincipal=2 Entonces
-			cantidadProductos <- 1
+			cantPaletas <- 0
 			
 			Repetir
 				Mostrar "Cantidad paletas: "
-				Leer productos[cantidadProductos]
-				
-				cantidadProductos <- cantidadProductos + 1
-		
+				Leer cantPaletas
+				escribir "Paletas reservadas: " , cantPaletas
 			Hasta que opcionMenu = 0
-			Si opcionMenu=0
-				escribir "Upss, algo salio mal, vamos de nuevo"
+		FinSi
+		Si menuPrincipal= 3 Entonces
+			cantPelotas <- 0
+			Repetir
+				Mostrar "Cantidad de Pelotas a reservar: "
+				Leer cantPelotas
+				escribir "Pelotas reservadas: ", cantPelotas
+			Hasta Que opcionMenu=0
 			FinSi
-		FinSi
 		Si menuPrincipal=4
-			escribir "MUCHAS GRACIAS POR USAR NUESTRA WEB!!!"
+			escribir "MUCHAS GRACIAS POR USAR NUESTRA WEB!!! Seguinos en nuestras redes @SomosPaddel y etiquetanos en tus historias!!!"
+			escribir "TICKET FINAL -=-=-=-=- TICKET FINAL "
+			escribir "Día: ", dias[diaElegido]
+			escribir "Hora: ", horas[horaElegida]
+			escribir  "Paletas reservadas: ", cantPaletas
+			escribir "Pelotas reservadas: ", cantPelotas
+			escribir "------------------------------------"
 		FinSi
-		
-			Hasta Que menuPrincipal=4
-	
-	
+		Si menuPrincipal <>1 Y  menuPrincipal <>2 Y  menuPrincipal <>3 Y menuPrincipal <>4 Entonces
+			escribir "Opción fallida, recuerde que los comandos aceptados son del 1 al 4. Arranquemos de nuevo!"
+		FinSi
+	Hasta Que menuPrincipal=4
 FinAlgoritmo
